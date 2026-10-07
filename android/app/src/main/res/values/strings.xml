@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="facebook_app_id">1675821607108245</string>
+  <string name="facebook_client_token">44f9dbe2096ecdb6c66de408dc8ab01f</string>
+  <string name="fb_login_protocol_scheme">fb1675821607108245</string>
+  <string name="app_name">EverQpid</string>
+</resources>

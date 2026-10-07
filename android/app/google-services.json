@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "514037743080",
+    "project_id": "everqpid-2601a",
+    "storage_bucket": "everqpid-2601a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514037743080:android:f71b81dc1daf137725f85d",
+        "android_client_info": {
+          "package_name": "com.everqpid.customerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514037743080-bavll183fd44vefqpheudoep6aphvc8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.everqpid.customerapp",
+            "certificate_hash": "c74dcda2f6e002a7b2695f02af669959018c5831"
+          }
+        },
+        {
+          "client_id": "514037743080-9nrfjn8cp3aegv8l3j5ln932vgvesm9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjC4wORUB4mwLjrYRBYtzqub5BPJVu2TQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514037743080-9nrfjn8cp3aegv8l3j5ln932vgvesm9t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514037743080-07ubhuckbd4e3cj12g10lcskcfkc0uj4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.everqpid.customerappapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>EverQpid — Find meaningful connections</title>
+  <meta name="description" content="EverQpid is a modern dating app to discover matches, chat, and build meaningful connections.">
+  <meta name="keywords" content="EverQpid, dating, matches, chat, relationships, find love">
+  <meta name="author" content="EverQpid">
+  <meta name="theme-color" content="#090415">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://web.everqpid.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EverQpid">
+  <meta property="og:title" content="EverQpid — Find meaningful connections">
+  <meta property="og:description" content="Discover matches, chat, and build meaningful connections with EverQpid.">
+  <meta property="og:url" content="https://web.everqpid.com/">
+  <meta property="og:image" content="https://web.everqpid.com/icons/Icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="EverQpid — Find meaningful connections">
+  <meta name="twitter:description" content="Discover matches, chat, and build meaningful connections with EverQpid.">
+  <meta name="twitter:image" content="https://web.everqpid.com/icons/Icon-512.png">
+
+  <!-- iOS / Apple -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="EverQpid">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Google Sign-In (Web) — must match GOOGLE_WEB_CLIENT_ID / AppConfig.googleWebClientId.
+       HTML cannot read --dart-define; update this value when rotating the OAuth client. -->
+  <meta name="google-signin-client_id"
+        content="514037743080-9nrfjn8cp3aegv8l3j5ln932vgvesm9t.apps.googleusercontent.com">
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Instant dark paint — no white flash before Flutter */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #090415;
+      color-scheme: dark;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 55% 45% at 50% 38%, rgba(139, 92, 246, 0.38), transparent 70%),
+        radial-gradient(ellipse 35% 30% at 88% 12%, rgba(168, 85, 247, 0.22), transparent 70%),
+        radial-gradient(ellipse 40% 35% at 8% 88%, rgba(124, 58, 237, 0.2), transparent 70%),
+        linear-gradient(180deg, #080313 0%, #15072D 50%, #090415 100%);
+    }
+    #flutter-loading {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      padding: 24px;
+    }
+    #flutter-loading.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #flutter-loading .icon-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.55), 0 0 80px rgba(168, 85, 247, 0.25);
+      animation: eq-icon-in 0.7s ease-out both;
+    }
+    #flutter-loading .icon-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #flutter-loading .name {
+      height: 36px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      animation: eq-name-in 0.7s ease-out 0.15s both;
+    }
+    #flutter-loading .tagline {
+      margin: 0;
+      font-size: 16px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      animation: eq-name-in 0.7s ease-out 0.3s both;
+    }
+    #flutter-loading .spinner {
+      margin-top: 12px;
+      width: 34px;
+      height: 34px;
+      border: 2.5px solid rgba(192, 132, 252, 0.18);
+      border-top-color: #C084FC;
+      border-right-color: #A855F7;
+      border-radius: 50%;
+      animation: eq-spin 0.9s linear infinite, eq-name-in 0.6s ease-out 0.45s both;
+    }
+    #flutter-loading .hint {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      animation: eq-name-in 0.6s ease-out 0.55s both;
+    }
+    .heart {
+      position: fixed;
+      color: rgba(192, 132, 252, 0.18);
+      font-size: 22px;
+      pointer-events: none;
+      z-index: 1;
+      animation: eq-float 8s ease-in-out infinite;
+      user-select: none;
+    }
+    @keyframes eq-spin { to { transform: rotate(360deg); } }
+    @keyframes eq-icon-in {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes eq-name-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes eq-float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.12; }
+      50% { transform: translateY(-16px) translateX(6px); opacity: 0.22; }
+    }
+    @media (max-width: 480px) {
+      #flutter-loading .icon-wrap { width: 80px; height: 80px; border-radius: 18px; }
+      #flutter-loading .name { height: 30px; max-width: 160px; }
+      #flutter-loading .tagline { font-size: 14px; }
+      .heart.desktop-only { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Subtle love accents (HTML first-paint, before Flutter) -->
+  <span class="heart" style="left:8%;top:18%;font-size:18px;animation-delay:0s">♡</span>
+  <span class="heart" style="left:82%;top:22%;font-size:28px;animation-delay:1.2s">♡</span>
+  <span class="heart" style="left:14%;top:72%;font-size:14px;animation-delay:2.1s">♡</span>
+  <span class="heart desktop-only" style="left:88%;top:58%;font-size:36px;animation-delay:0.6s">♡</span>
+  <span class="heart" style="left:72%;top:78%;font-size:20px;animation-delay:3s">♡</span>
+  <span class="heart desktop-only" style="left:42%;top:12%;font-size:16px;animation-delay:1.8s">♡</span>
+  <span class="heart desktop-only" style="left:6%;top:42%;font-size:22px;animation-delay:2.6s">♡</span>
+
+  <div id="flutter-loading" aria-live="polite" aria-busy="true">
+    <div class="icon-wrap">
+      <img src="splash/appIcon.jpeg" width="96" height="96" alt="EverQpid" />
+    </div>
+    <img class="name" src="splash/name.png" alt="EverQpid" />
+    <p class="tagline">Where meaningful connections begin.</p>
+    <div class="spinner" role="status" aria-label="Loading"></div>
+    <p class="hint">Finding something special...</p>
+  </div>
+
+  <!-- Optional container for visible reCAPTCHA; invisible verifier is used by default. -->
+  <div id="recaptcha-container"></div>
+
+  <script>
+    // Fade out HTML shell once Flutter paints — no white flash, no hard cut.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('flutter-loading');
+      if (!el) return;
+      el.classList.add('fade-out');
+      setTimeout(function () {
+        el.remove();
+        document.querySelectorAll('.heart').forEach(function (h) { h.remove(); });
+      }, 520);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
